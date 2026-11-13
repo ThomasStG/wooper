@@ -1,5 +1,6 @@
 :root {
   --wooper-icon: url("https://raw.githubusercontent.com/ThomasStG/wooper/main/wooper.png");
+
   /* Wooper palette */
   --wooper-body: #5b8fd6;
   --wooper-body-dark: #3a62a8;
@@ -9,12 +10,21 @@
   --wooper-belly: #f3ecd2;
   --wooper-gill: #ee5a7b;
   --wooper-gill-dark: #c9405f;
+  --white: #ffffff;
+
+  /* Light-mode pinks (soft tints of Wooper's gills) */
+  --wooper-pink-50: #fff5f8;
+  --wooper-pink-100: #ffe9f0;
+  --wooper-pink-200: #fddbe6;
+  --wooper-pink-300: #fbc8d8;
+  --wooper-pink-400: #f7a9c0;
 }
 
-/* ---------- Core color variables ---------- */
-.theme-dark,
-.theme-light {
-  /* Backgrounds (classic variables) */
+/* =====================================================
+   DARK MODE: navy Wooper
+   ===================================================== */
+.theme-dark {
+  /* Backgrounds (classic) */
   --background-primary: var(--wooper-navy);
   --background-secondary: var(--wooper-navy-deep);
   --background-secondary-alt: var(--wooper-navy-darker);
@@ -35,7 +45,7 @@
   --channeltextarea-background: #243864;
   --input-background: #243864;
 
-  /* Hover / selected / active states */
+  /* Hover / selected / active */
   --background-modifier-hover: rgba(91, 143, 214, 0.15);
   --background-modifier-selected: rgba(238, 90, 123, 0.22);
   --background-modifier-active: rgba(91, 143, 214, 0.28);
@@ -52,10 +62,87 @@
   --interactive-normal: #b8c8e6;
   --interactive-hover: #ffffff;
   --interactive-active: #ffffff;
-  --interactive-muted: #5f7099;
+  --interactive-muted: #6f80ab;
   --text-link: #8fc2ff;
 
-  /* Brand colours: Wooper's gill pink */
+  /* Mentions */
+  --mention-foreground: #fff;
+  --mention-background: rgba(238, 90, 123, 0.3);
+
+  /* Theme-specific helpers used by the rules below */
+  --wooper-border: var(--wooper-body-dark);
+  --wooper-pill: var(--wooper-gill);
+  --wooper-selected-bg: rgba(238, 90, 123, 0.22);
+  --wooper-code-bg: var(--wooper-navy-darker);
+  --wooper-code-border: var(--wooper-body-dark);
+  --wooper-scrollbar: var(--wooper-body-dark);
+  --wooper-watermark-opacity: 0.08;
+}
+
+/* =====================================================
+   LIGHT MODE: pink Wooper
+   ===================================================== */
+.theme-light {
+  /* Backgrounds (classic) */
+  --background-primary: var(--wooper-pink-50);
+  --background-secondary: var(--wooper-pink-100);
+  --background-secondary-alt: var(--wooper-pink-200);
+  --background-tertiary: var(--wooper-pink-300);
+  --background-floating: #ffffff;
+  --background-accent: var(--wooper-pink-400);
+  --chat-background: var(--wooper-pink-50);
+
+  /* Backgrounds (newer Discord variables) */
+  --background-base-lowest: var(--wooper-pink-300);
+  --background-base-lower: var(--wooper-pink-200);
+  --background-base-low: var(--wooper-pink-100);
+  --background-surface-high: var(--wooper-pink-50);
+  --background-surface-higher: #ffffff;
+  --background-surface-highest: #ffffff;
+
+  /* Inputs */
+  --channeltextarea-background: #ffffff;
+  --input-background: #ffffff;
+
+  /* Hover / selected / active */
+  --background-modifier-hover: rgba(238, 90, 123, 0.10);
+  --background-modifier-selected: rgba(238, 90, 123, 0.20);
+  --background-modifier-active: rgba(238, 90, 123, 0.28);
+  --background-modifier-accent: rgba(28, 43, 79, 0.10);
+
+  /* Text: navy on pink */
+  --text-normal: var(--wooper-navy);
+  --text-default: var(--wooper-navy);
+  --text-muted: #6d5a80;
+  --text-secondary: #4a4f7a;
+  --header-primary: var(--wooper-navy-deep);
+  --header-secondary: #4a4f7a;
+  --channels-default: #6d5a80;
+  --interactive-normal: #4a5a8c;
+  --interactive-hover: var(--wooper-navy-deep);
+  --interactive-active: var(--wooper-navy-deep);
+  --interactive-muted: #9a8aab;
+  --text-link: #2f5fb0;
+
+  /* Mentions */
+  --mention-foreground: #a93550;
+  --mention-background: rgba(238, 90, 123, 0.20);
+
+  /* Theme-specific helpers used by the rules below */
+  --wooper-border: var(--wooper-pink-400);
+  --wooper-pill: var(--wooper-gill-dark);
+  --wooper-selected-bg: rgba(238, 90, 123, 0.20);
+  --wooper-code-bg: #ffffff;
+  --wooper-code-border: var(--wooper-pink-400);
+  --wooper-scrollbar: var(--wooper-pink-400);
+  --wooper-watermark-opacity: 0.12;
+}
+
+/* =====================================================
+   SHARED: brand colors (same gill pink in both modes)
+   ===================================================== */
+.theme-dark,
+.theme-light {
   --brand-experiment: var(--wooper-gill);
   --brand-experiment-560: var(--wooper-gill-dark);
   --brand-500: var(--wooper-gill);
@@ -64,10 +151,13 @@
   --brand-630: #a93550;
   --button-filled-brand-background: var(--wooper-gill);
   --button-filled-brand-background-hover: var(--wooper-gill-dark);
-  --mention-foreground: #fff;
-  --mention-background: rgba(238, 90, 123, 0.3);
-  --text-brand: var(--wooper-gill);
+  --text-brand: var(--wooper-gill-dark);
   --focus-primary: var(--wooper-body);
+  --status-danger: #e5484d;
+}
+
+.theme-dark {
+  --text-brand: var(--wooper-gill);
   --status-danger: #ff6b6b;
 }
 
@@ -82,12 +172,12 @@
   background-size: 80% !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-color: var(--wooper-body) !important;
+  background-color: var(--white) !important;
 }
 
-/* Selected / hovered server pill in gill pink */
+/* Selected / hovered server pill */
 [class*="pill"] [class*="item"] {
-  background-color: var(--wooper-gill) !important;
+  background-color: var(--wooper-pill) !important;
 }
 
 /* ---------- Faint Wooper watermark in the chat area ---------- */
@@ -106,16 +196,17 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom right;
-  opacity: 0.08;
+  opacity: var(--wooper-watermark-opacity);
   pointer-events: none;
   z-index: 0;
+  transform: scaleX(-1);
 }
 
 /* ---------- Accents ---------- */
 
-/* Text box gets a blue border that turns gill-pink on focus */
+/* Text box: blue/pink border that turns gill-pink on focus */
 [class*="channelTextArea"] {
-  border: 2px solid var(--wooper-body-dark);
+  border: 2px solid var(--wooper-border);
   border-radius: 12px;
   transition: border-color 0.2s ease;
 }
@@ -133,7 +224,7 @@
 
 /* Selected channel */
 [class*="modeSelected"] {
-  background-color: rgba(238, 90, 123, 0.22) !important;
+  background-color: var(--wooper-selected-bg) !important;
 }
 
 /* Unread/mention bars at the top and bottom of the server list */
@@ -144,7 +235,7 @@
 
 /* Scrollbars */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--wooper-body-dark) !important;
+  background-color: var(--wooper-scrollbar) !important;
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -173,6 +264,6 @@
 
 code,
 pre code {
-  background-color: var(--wooper-navy-darker) !important;
-  border-color: var(--wooper-body-dark) !important;
+  background-color: var(--wooper-code-bg) !important;
+  border-color: var(--wooper-code-border) !important;
 }
